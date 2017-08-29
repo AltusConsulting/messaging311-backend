@@ -1,0 +1,6 @@
+[fcm]
+host = "https://fcm.googleapis.com/fcm/send"
+keyServer = "AIzaSyAfYQvxBK6-URtUuHSutKJRieYyoDjKmUw"
+
+[server]
+port = 9003

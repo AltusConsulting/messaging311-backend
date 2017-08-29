@@ -1,0 +1,73 @@
+swagger: "2.0"
+info:
+  description: "This is the Messaging API destinated for managing notifications"
+  version: "1.0.0"
+  title: "Messaging API"
+schemes:
+  - http
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /ping:
+    get:
+      description: Ping
+      responses:
+        200:
+          description: Success
+          schema:
+            type: string
+  /api/messaging/v1/notifications:
+    post:
+      summary: Notifications
+      description: Send notifications
+      parameters:
+        - in: body
+          name: body
+          description: Notification schema
+          required: true
+          schema:
+            $ref: "#/definitions/Message"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/Response"
+        400:
+          description: Bad json
+          schema:
+            $ref: "#/definitions/Response"
+definitions:
+  Message:
+    type: object
+    properties:
+      To:
+        type: string
+      DelayWhileIdle:
+        type: boolean
+      Priority:
+        type: string
+      Data:
+        type: object
+        properties:
+          Alert:
+            type: boolean
+          ID:
+            type: string
+          Page:
+            type: string
+      Notification:
+        type: object
+        properties:
+          Body:
+            type: string
+          Title:
+            type: string
+          Sound:
+            type: string  
+  Response:
+    type: object
+    properties:
+      message:
+        type: string
